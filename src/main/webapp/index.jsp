@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <body>
 <h2>Are you a customer or an employee?</h2>
@@ -15,5 +16,6 @@ function goToEmployeePage(){
 window.location.href = 'employeePage.jsp';
 }
 </script>
+
 </body>
 </html>

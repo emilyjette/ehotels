@@ -17,7 +17,7 @@ public class ConnectionDB {
     private final String dbusername = "postgres";
     private final String dbpassword = "admin";
 
-    private Connection getConnection() throws Exception{
+    public Connection getConnection() throws Exception{
         try{
             con = DriverManager.getConnection("jdbc:postgresql://localhost:"+ dbServerPort+"/"+dbName,dbusername,dbpassword);
             return con;
