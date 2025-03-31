@@ -45,7 +45,7 @@ public class Room {
     public String getExpendable(){return this.expendable;}
 
     //Setters
-
+    //this isnt changing anything in the database???
     public void setId(Integer id){this.id = id;}
     public void setHotelID(Integer hotelID){this.hotelID = hotelID;}
     public void setPrice(float price){this.price=price;}

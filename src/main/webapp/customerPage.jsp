@@ -1,6 +1,7 @@
 <html>
 <body>
-<h2>Hello Customer!</h2>
+
+<h2 style="background-color:MediumSeaGreen;color:White;">Hello Customer!</h2>
 
 <button onClick = "goToMainPage()">Back to main</button>
 

@@ -43,43 +43,43 @@ public class RoomService {
         }
     }
 
-    public List<Room> getSpecificRooms(String capacity, String area, String chain_name,Float rating, int num_of_rooms, Float price) throws Exception{
-        String sql = "SELECT * FROM Hotel_Room Where ";
-
-        // capacity, area, chain,rating,num of rooms available in hotel, price
-        ConnectionDB db = new ConnectionDB();
-
-        List<Room> rooms = new ArrayList<>();
-
-        try(Connection con = db.getConnection()) {
-            PreparedStatement stmt = con.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()){
-                Room room = new Room(
-                        rs.getInt("id"),
-                        rs.getInt("hotelid"),
-                        rs.getFloat("price"),
-                        rs.getString("amenities"),
-                        rs.getInt("capacity"),
-                        rs.getString("view"),
-                        rs.getString("damages"),
-                        rs.getString("expendable")
-                );
-                rooms.add(room);
-            }
-
-            rs.close();
-            stmt.close();
-            con.close();
-            db.close();
-
-            return rooms;
-
-        }catch (Exception e){
-            throw new Exception(e.getMessage());
-        }
-    }
+//    public List<Room> getSpecificRooms(String capacity, String area, String chain_name,Float rating, int num_of_rooms, Float price) throws Exception{
+//        String sql = "SELECT * FROM Hotel_Room Where ";
+//
+//        // capacity, area, chain,rating,num of rooms available in hotel, price
+//        ConnectionDB db = new ConnectionDB();
+//
+//        List<Room> rooms = new ArrayList<>();
+//
+//        try(Connection con = db.getConnection()) {
+//            PreparedStatement stmt = con.prepareStatement(sql);
+//            ResultSet rs = stmt.executeQuery();
+//
+//            while (rs.next()){
+//                Room room = new Room(
+//                        rs.getInt("id"),
+//                        rs.getInt("hotelid"),
+//                        rs.getFloat("price"),
+//                        rs.getString("amenities"),
+//                        rs.getInt("capacity"),
+//                        rs.getString("view"),
+//                        rs.getString("damages"),
+//                        rs.getString("expendable")
+//                );
+//                rooms.add(room);
+//            }
+//
+//            rs.close();
+//            stmt.close();
+//            con.close();
+//            db.close();
+//
+//            return rooms;
+//
+//        }catch (Exception e){
+//            throw new Exception(e.getMessage());
+//        }
+//    }
 
     /*
     * @param id id of the room to be deleted
