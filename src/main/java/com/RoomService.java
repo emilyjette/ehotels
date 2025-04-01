@@ -1,3 +1,5 @@
+//@author Emily Jette
+//student number: 300355657
 package com;
 
 import java.sql.Connection;
@@ -5,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+
+//calls to db
 
 public class RoomService {
     public List<Room> getAllRooms() throws Exception{
@@ -26,7 +30,7 @@ public class RoomService {
                         rs.getInt("capacity"),
                         rs.getString("view"),
                         rs.getString("damages"),
-                        rs.getString("expendable")
+                        rs.getString("extendable")
                 );
                 rooms.add(room);
             }
@@ -43,16 +47,23 @@ public class RoomService {
         }
     }
 
-    public List<Room> getSpecificRooms(String capacity, String area, String chain_name,Float rating, int num_of_rooms, Float price) throws Exception{
-        String sql = "SELECT * FROM Hotel_Room Where ";
+    public List<Room> getSpecificRooms(int capacity, String area, String chain_name,Float rating, int num_of_rooms, Float price) throws Exception{
+        Connection con = null;
+        //easy ones
+        String sql = "SELECT * FROM Hotel_Room Where capacity =? and price =? ";
+        //chain name,rating, num_of_rooms,area must come from hotel
+        //Join??
+        //"Select chain_name, rating,num_of_rooms,area from Hotel Where ID = hotelID"
 
         // capacity, area, chain,rating,num of rooms available in hotel, price
         ConnectionDB db = new ConnectionDB();
-
         List<Room> rooms = new ArrayList<>();
 
-        try(Connection con = db.getConnection()) {
+        try{
+            con = db.getConnection();
             PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1,capacity);
+            stmt.setFloat(2,price);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()){
@@ -64,7 +75,7 @@ public class RoomService {
                         rs.getInt("capacity"),
                         rs.getString("view"),
                         rs.getString("damages"),
-                        rs.getString("expendable")
+                        rs.getString("extendable")
                 );
                 rooms.add(room);
             }
@@ -102,10 +113,10 @@ public class RoomService {
             stmt.close();
 
         }catch (Exception e){
-            message = "Error while delete grade: " + e.getMessage();
+            message = "Error while delete room: " + e.getMessage();
         }finally {
             if (con != null) con.close();
-            if (message.equals("")) message = "Grade successfully deleted!";
+            if (message.equals("")) message = "room successfully deleted!";
         }
         return message;
     }

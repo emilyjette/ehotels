@@ -130,7 +130,7 @@ INSERT INTO Hotel_room(ID,HotelID,Price,Amenities,Capacity,View,Damages, Extenda
 
 INSERT INTO Hotel_room(ID,HotelID,Price,Amenities,Capacity,View,Damages, Extendable) VALUES (0804,0008,311.50,'2 double beds, 2 bathrooms, coffeemaker, minifridge, TV',4, 'sea view', 'stain on rug', 'non-extendable');
 
-INSERT INTO Hotel_room(ID,HotelID,Price,Amenities,Capacity,View,Damages, Extendable) VALUES (0805,0008,270.50,'1 double bed, 1 pull-out couch, 1 bathroom, coffeemaker, minifridge, TV',3, 'sea view', 'no damages', 'extendable'); 
+INSERT INTO Hotel_room(ID,HotelID,Price,Amenities,Capacity,View,Damages, Extendable) VALUES (0805,0008,270.50,'1 double bed, 1 pull-out couch, 1 bathroom, coffeemaker, minifridge, TV',3, 'sea view', 'no damages', 'extendable');
 
 INSERT INTO Hotel_chain(Name,Add_central,Num_of_hotels,Phone,Contact_email) VALUES ('Fairmont Hotels & Resorts','155 Wellington St W Suite 3300, Toronto, Ontario',10,'416-874-2600','contact@fairmont.com');
 
