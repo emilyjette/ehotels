@@ -23,26 +23,12 @@ public class test {
         List<Room> rooms;
         try{
             //really just checking for capacity and price
-            rooms = test.getSpecificRooms(2," Transylvania","Dracula Hotels",2.8,180,(float)210.50);
+            rooms = test.getSpecificRooms(3," Transylvania","Dracula Hotels",2.8,180,(float)210.50);
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }
         return rooms;
     }
-
-//    public static List<Hotel> allHotels() throws Exception {
-//        HotelService test = new HotelService();
-//        List<Hotel> hotels;
-//        try{
-//            hotels = test.getAllHotels();
-//        }catch (Exception e){
-//            throw new Exception(e.getMessage());
-//        }
-//        return hotels;
-//    }
-
-
-
 
     public static void main(String[] args) {
         // JDBC URL, username, and password of MySQL server
@@ -50,6 +36,9 @@ public class test {
       try {
 
           List<Room> test = specificRooms();
+          if(test.isEmpty()){
+             System.out.println("No rooms found");
+          }
           for (Room room : test) {
               System.out.println(room);
           }
