@@ -35,7 +35,7 @@ public class test {
 
       try {
 
-          List<Room> test = specificRooms();
+          List<Room> test = allRooms();
           if(test.isEmpty()){
              System.out.println("No rooms found");
           }

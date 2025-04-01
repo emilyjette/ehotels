@@ -13,6 +13,7 @@ import java.util.List;
  */
 
 public class RoomService {
+    //Shows all rooms
     public List<Room> getAllRooms() throws Exception{
         String sql = "SELECT * FROM Hotel_Room";
         ConnectionDB db = new ConnectionDB();
