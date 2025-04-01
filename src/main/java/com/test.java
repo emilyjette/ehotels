@@ -31,10 +31,13 @@ public class test {
     }
 
 
+
+
     public static void main(String[] args) {
         // JDBC URL, username, and password of MySQL server
 
       try {
+
           List<Room> test = specificRooms();
           for (Room room : test) {
               System.out.println(room);
