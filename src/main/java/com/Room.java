@@ -45,7 +45,7 @@ public class Room {
     public String getExpendable(){return this.expendable;}
 
     //Setters
-    //this isnt changing anything in the database???
+    //this isn't changing anything in the database
     public void setId(Integer id){this.id = id;}
     public void setHotelID(Integer hotelID){this.hotelID = hotelID;}
     public void setPrice(float price){this.price=price;}
@@ -57,14 +57,15 @@ public class Room {
 
     @Override
     public String toString() {
-        return "<ul>"
-                + "<li>Room= " + id + "</li>"
-                + "<li>Room= " + hotelID + "</li>"
-                + "<li>Room= " + price + "</li>"
-                + "<li>Room= " + amenities + "</li>"
-                + "<li>Room= " + capacity + "</li>"
-                + "<li>Room= " + view + "</li>"
-                + "<li>Room= " + damages + "</li>"
-                +"<li>Room= " + expendable + "</li>";
+        return
+                "Room= " + id
+                + " Room= " + hotelID
+                + " Room= " + price
+                + " Room= " + amenities
+                + " Room= " + capacity
+                + " Room= " + view
+                + " Room= " + damages
+                +" Room= " + expendable ;
+
     }
 }

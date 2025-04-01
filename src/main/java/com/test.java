@@ -1,13 +1,49 @@
 package com;
 
 import java.sql.*;
+import java.util.List;
 
 //directly from pgadmin
 
 public class test {
 
+    public static List<Room> allRooms() throws Exception {
+        RoomService test = new RoomService();
+        List<Room> rooms;
+        try{
+            rooms = test.getAllRooms();
+        }catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+       return rooms;
+    }
+
+    public static List<Room> specificRooms() throws Exception {
+        RoomService test = new RoomService();
+        List<Room> rooms;
+        try{
+            //really just checking for capacity and price
+            rooms = test.getSpecificRooms(2,"canada","marriott",(float)4.5,20,(float)210.50);
+        }catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+        return rooms;
+    }
+
+
     public static void main(String[] args) {
         // JDBC URL, username, and password of MySQL server
+
+      try {
+          List<Room> test = specificRooms();
+          for (Room room : test) {
+              System.out.println(room);
+          }
+      }catch (Exception e){
+          System.out.println(e.getMessage());
+      }
+
+/*
         try{
             Connection db = DriverManager.getConnection("jdbc:postgresql://localhost:5433/postgres",
                     "postgres", "admin");
@@ -52,7 +88,7 @@ public class test {
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }
+        }*/
     }
 
 }
