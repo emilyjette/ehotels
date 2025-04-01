@@ -9,7 +9,7 @@ public class Room {
     private int capacity;
     private String view;
     private String damages;
-    private String expendable;
+    private String extendable;
 
 
     /**
@@ -22,8 +22,9 @@ public class Room {
      * @param capacity  room capacity
      * @param view      room view
      * @param damages   room damages
+     * @param extendable
      */
-    public Room(Integer id, Integer hotelID, float price, String amenities, int capacity, String view, String damages,String expendable) {
+    public Room(Integer id, Integer hotelID, float price, String amenities, int capacity, String view, String damages,String extendable) {
         this.id = id;
         this.hotelID = hotelID;
         this.price = price;
@@ -31,7 +32,7 @@ public class Room {
         this.capacity = capacity;
         this.view = view;
         this.damages = damages;
-        this.expendable = expendable;
+        this.extendable = extendable;
     }
 
     //Getters
@@ -42,7 +43,7 @@ public class Room {
     public int getCapacity(){return this.capacity;}
     public String getView(){return this.view;}
     public String getDamages(){return this.damages;}
-    public String getExpendable(){return this.expendable;}
+    public String getExtendable(){return this.extendable;}
 
     //Setters
     public void setId(Integer id){this.id = id;}
@@ -52,7 +53,7 @@ public class Room {
     public void setCapacity(int capacity){this.capacity=capacity;}
     public void setView(String view){this.view=view;}
     public void setDamages(String damages){this.damages=damages;}
-    public void setExpendable(String expendable){this.expendable=expendable;}
+    public void setExtendable(String extendable){this.extendable=extendable;}
 
     @Override
     public String toString() {
@@ -64,7 +65,7 @@ public class Room {
                 + " Room= " + capacity
                 + " Room= " + view
                 + " Room= " + damages
-                +" Room= " + expendable ;
+                +" Room= " + extendable ;
 
     }
 }
