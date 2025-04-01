@@ -8,7 +8,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-//calls to db
+/*
+* calls to database
+ */
 
 public class RoomService {
     public List<Room> getAllRooms() throws Exception{
@@ -47,15 +49,11 @@ public class RoomService {
         }
     }
 
-    public List<Room> getSpecificRooms(int capacity, String area, String chain_name,Float rating, int num_of_rooms, Float price) throws Exception{
+    public List<Room> getSpecificRooms(int capacity, String area, String chain_name, Double rating, int num_of_rooms, Float price) throws Exception{
         Connection con = null;
-        //easy ones
-        String sql = "SELECT * FROM Hotel_Room Where capacity =? and price =? ";
-        //chain name,rating, num_of_rooms,area must come from hotel
-        //Join??
-        //"Select chain_name, rating,num_of_rooms,area from Hotel Where ID = hotelID"
 
-        // capacity, area, chain,rating,num of rooms available in hotel, price
+        String sql = "SELECT H.area, R.* FROM ehotels.Hotel H JOIN Hotel_Room R ON H.id = R.hotelid WHERE R.capacity =? And H.area =? AND H.chain_name =? AND H.rating=? AND H.num_of_rooms=? AND R.price = ? AND H.id = hotelid";
+
         ConnectionDB db = new ConnectionDB();
         List<Room> rooms = new ArrayList<>();
 
@@ -63,10 +61,16 @@ public class RoomService {
             con = db.getConnection();
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1,capacity);
-            stmt.setFloat(2,price);
+            stmt.setString(2,area);
+            stmt.setString(3,chain_name);
+            stmt.setDouble(4,rating);
+            stmt.setInt(5,num_of_rooms);
+            stmt.setFloat(6,price);
+
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()){
+                //??
                 Room room = new Room(
                         rs.getInt("id"),
                         rs.getInt("hotelid"),
@@ -120,5 +124,112 @@ public class RoomService {
         }
         return message;
     }
+
+    /**
+     * Method to create a room in the database
+     *
+     * @param room room to be created
+     * @return string returned that states if the room created or not
+     * @throws Exception when trying to connect to database
+     */
+    public String createRoom(Room room) throws Exception {
+        String message = "";
+        Connection con = null;
+
+        // connection object
+        ConnectionDB db = new ConnectionDB();
+        System.out.println(room.getId());
+        System.out.println(room.getHotelID());
+        System.out.println(room.getPrice());
+        System.out.println(room.getAmenities());
+        System.out.println(room.getCapacity());
+        System.out.println(room.getView());
+        System.out.println(room.getDamages());
+        System.out.println(room.getExtendable());
+
+        String insertRoomQuery = "Insert into hotel_room (id,hotelid,price,amenities,capacity,view,damages,extendable) Values (?,?,?,?,?,?,?,?);";
+
+        try {
+            con = db.getConnection(); //get Connection
+
+            // prepare the statement
+            PreparedStatement stmt = con.prepareStatement(insertRoomQuery);
+
+            // set every ? of statement
+            stmt.setInt(1, room.getId());
+            stmt.setInt(2, room.getHotelID());
+            stmt.setFloat(3, room.getPrice());
+            stmt.setString(4,room.getAmenities());
+            stmt.setInt(5,room.getCapacity());
+            stmt.setString(6,room.getView());
+            stmt.setString(7,room.getDamages());
+            stmt.setString(8,room.getExtendable());
+
+            // execute the query
+            int output = stmt.executeUpdate();
+            System.out.println(output);
+
+            // close the statement
+            stmt.close();
+            // close the connection
+            db.close();
+        } catch (Exception e) {
+            message = "Error while inserting room: " + e.getMessage();
+        } finally {
+            if (con != null) // if connection is still open, then close.
+                con.close();
+            if (message.isEmpty()) message = "Room successfully inserted!";
+
+        }
+        // return respective message
+        return message;
+    }
+
+    /**
+     * Method to update a room in the database
+     * Cannot update the id or hotelID
+     *
+     * @param room room to be updated
+     * @return string returned that states if the room updated or not
+     * @throws Exception when trying to connect to database
+     */
+    public String updateRoom(Room room) throws Exception{
+        Connection con = null;
+        String message = "";
+
+        String sql = "UPDATE room SET price=?, amenities=?, capacity=?,view=?,damages=?,extendable=? WHERE id=?;";
+        ConnectionDB db = new ConnectionDB();
+
+        try {
+            con = db.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            // set every ? of statement
+
+            // set every ? of statement
+            stmt.setFloat(1, room.getPrice());
+            stmt.setString(2,room.getAmenities());
+            stmt.setInt(3,room.getCapacity());
+            stmt.setString(4,room.getView());
+            stmt.setString(5,room.getDamages());
+            stmt.setString(6,room.getExtendable());
+            stmt.setInt(7, room.getId());
+
+
+            stmt.executeUpdate();
+
+            stmt.close();
+
+        } catch (Exception e) {
+            message = "Error while updating room: " + e.getMessage();
+
+        } finally {
+            if (con != null) con.close();
+            if (message.isEmpty()) message = "Room successfully updated!";
+        }
+
+        return message;
+    }
+
 
 }
