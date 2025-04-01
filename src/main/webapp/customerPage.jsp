@@ -90,6 +90,10 @@
                <option value="5">311.50</option>
              </select>
              <br><br>
+  Start of stay: <input type="date" value="date_start" id ="date_start">
+  <br><br>
+  End of stay: <input type="date" value="date_end" id = "date_end">
+  <br><br>
   <input type="submit" value="Submit">
 </form>
 <h4>Notes:</h4>
