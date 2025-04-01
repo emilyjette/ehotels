@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /*
@@ -49,15 +50,11 @@ public class RoomService {
         }
     }
 
-    public List<Room> getSpecificRooms(int capacity, String area, String chain_name,Float rating, int num_of_rooms, Float price) throws Exception{
+    public List<Room> getSpecificRooms(int capacity, String area, String chain_name, Double rating, int num_of_rooms, Float price) throws Exception{
         Connection con = null;
-        //easy ones
-        String sql = "SELECT * FROM Hotel_Room Where capacity =? and price =? ";
-        //chain name,rating, num_of_rooms,area must come from hotel
-        //Join??
-        //"Select chain_name, rating,num_of_rooms,area from Hotel Where ID = hotelID"
 
-        // capacity, area, chain,rating,num of rooms available in hotel, price
+        String sql = "SELECT H.area, R.* FROM ehotels.Hotel H JOIN Hotel_Room R ON H.id = R.hotelid WHERE R.capacity =? And H.area =? AND H.chain_name =? AND H.rating=? AND H.num_of_rooms=? AND R.price = ? AND H.id = hotelid";
+
         ConnectionDB db = new ConnectionDB();
         List<Room> rooms = new ArrayList<>();
 
@@ -65,10 +62,16 @@ public class RoomService {
             con = db.getConnection();
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1,capacity);
-            stmt.setFloat(2,price);
+            stmt.setString(2,area);
+            stmt.setString(3,chain_name);
+            stmt.setDouble(4,rating);
+            stmt.setInt(5,num_of_rooms);
+            stmt.setFloat(6,price);
+
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()){
+                //??
                 Room room = new Room(
                         rs.getInt("id"),
                         rs.getInt("hotelid"),

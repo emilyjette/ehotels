@@ -23,12 +23,23 @@ public class test {
         List<Room> rooms;
         try{
             //really just checking for capacity and price
-            rooms = test.getSpecificRooms(2,"canada","marriott",(float)4.5,20,(float)210.50);
+            rooms = test.getSpecificRooms(2," Transylvania","Dracula Hotels",2.8,180,(float)210.50);
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }
         return rooms;
     }
+
+//    public static List<Hotel> allHotels() throws Exception {
+//        HotelService test = new HotelService();
+//        List<Hotel> hotels;
+//        try{
+//            hotels = test.getAllHotels();
+//        }catch (Exception e){
+//            throw new Exception(e.getMessage());
+//        }
+//        return hotels;
+//    }
 
 
 
@@ -46,14 +57,13 @@ public class test {
           System.out.println(e.getMessage());
       }
 
-/*
-        try{
+/*        try{
             Connection db = DriverManager.getConnection("jdbc:postgresql://localhost:5433/postgres",
                     "postgres", "admin");
 
             Statement st = db.createStatement();
             st.execute("SET search_path TO ehotels;");
-
+/*
             System.out.println("query 1");
             ResultSet rs1 = st.executeQuery("SELECT HR.ID, H.Chain_name as HotelName, H.Address as HotelAddress FROM Hotel_room as HR JOIN Hotel as H ON HR.HotelID = H.ID  Order by HR.Price");
             System.out.println("roomId \t hotel name \t hotel address");
@@ -86,6 +96,13 @@ public class test {
             rs2.close();
             rs3.close();
             rs4.close();
+
+            System.out.println("query ");
+            ResultSet rs = st.executeQuery("Select area from Hotel");
+            //System.out.println("Employee name \t Hotel name \t Hotel address");
+            while(rs.next()){
+                System.out.println( rs.getString(1));
+            }
             st.close();
             db.close();
 
