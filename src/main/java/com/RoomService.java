@@ -8,7 +8,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-//calls to db
+/*
+* calls to database
+ */
 
 public class RoomService {
     public List<Room> getAllRooms() throws Exception{
@@ -119,6 +121,14 @@ public class RoomService {
             if (message.equals("")) message = "room successfully deleted!";
         }
         return message;
+    }
+
+    //add update, add db functions
+    public String updateRoom(){
+        return null;
+    }
+    public String addRoom(){
+        return null;
     }
 
 }

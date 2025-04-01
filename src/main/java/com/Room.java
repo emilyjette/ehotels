@@ -13,7 +13,7 @@ public class Room {
 
 
     /**
-     * Constructor to create Grade object with id, course_name, grade, student_id
+     * Constructor to create Room object
      *
      * @param id        id of room
      * @param hotelID   if of the hotel
@@ -45,7 +45,6 @@ public class Room {
     public String getExpendable(){return this.expendable;}
 
     //Setters
-    //this isn't changing anything in the database
     public void setId(Integer id){this.id = id;}
     public void setHotelID(Integer hotelID){this.hotelID = hotelID;}
     public void setPrice(float price){this.price=price;}
