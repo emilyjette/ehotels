@@ -58,14 +58,14 @@ public class Room {
     @Override
     public String toString() {
         return
-                "Room= " + id
-                + " Room= " + hotelID
+                "Room= " +id
+                + " Room= "+hotelID
                 + " Room= " + price
                 + " Room= " + amenities
                 + " Room= " + capacity
                 + " Room= " + view
                 + " Room= " + damages
-                +" Room= " + extendable ;
+                + " Room= " + extendable ;
 
     }
 }
