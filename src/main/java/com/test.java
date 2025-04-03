@@ -22,8 +22,10 @@ public class test {
         RoomService test = new RoomService();
         List<Room> rooms;
         try{
-            //really just checking for capacity and price
-            rooms = test.getSpecificRooms(3," Transylvania","Dracula Hotels",2.8,180,(float)210.50);
+            Date sqlStartDate = Date.valueOf("2021-03-12");
+            Date sqlEndDate = Date.valueOf("2021-03-24");
+
+            rooms = test.getSpecificRooms(sqlStartDate,sqlEndDate,2," Transylvania","Dracula Hotels",4.2,300,(float)205.00);
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }
@@ -47,12 +49,12 @@ public class test {
 
       try {
 
-          List<String> test = avgNumRooms();
+          List<Room> test = specificRooms();
           if(test.isEmpty()){
              System.out.println("No rooms found");
           }
-          for (String avg : test) {
-              System.out.println(avg);
+          for (Room room : test) {
+              System.out.println(room);
           }
       }catch (Exception e){
           System.out.println(e.getMessage());

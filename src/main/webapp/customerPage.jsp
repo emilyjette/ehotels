@@ -94,18 +94,11 @@
   <br><br>
   End of stay: <input type="date" name="date_end" value="date_end" id = "date_end">
   <br><br>
-  <input type="submit" value="Submit" onClick="myFunc()">
+  <input type="submit" value="Submit">
 </form>
 
 <h4>Notes:</h4>
 <p>Rating: 1-5 with 1 decimal place.<br>Number of rooms: Min 20, Max 950</p>
-
-
- <script>
-  function myFunc(){
-  window.location.href = 'index.jsp';
-  }
-  </script>
 </body>
 </html>
 

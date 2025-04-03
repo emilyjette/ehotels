@@ -2,6 +2,7 @@
 <%@ page import="com.Room" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.sql.Date"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
@@ -18,7 +19,10 @@ String date_end= request.getParameter("date_end") ;
     RoomService test = new RoomService();
     List<Room> rooms = null;
     try {
-        rooms = test.getSpecificRooms(Integer.parseInt(capacity),area, chain_name, Double.parseDouble(rating),Integer.parseInt(num_of_rooms), Float.parseFloat(price));
+        Date sqlDateStart = Date.valueOf(date_start);
+        Date sqlDateEnd = Date.valueOf(date_end);
+
+        rooms = test.getSpecificRooms(sqlDateStart,sqlDateEnd,Integer.parseInt(capacity),area, chain_name, Double.parseDouble(rating),Integer.parseInt(num_of_rooms), Float.parseFloat(price));
     } catch (Exception e) {
         e.printStackTrace();
     }
