@@ -30,17 +30,29 @@ public class test {
         return rooms;
     }
 
+    public static List<String> avgNumRooms() throws Exception{
+        RoomService test = new RoomService();
+        List<String> avg;
+        try{
+            //really just checking for capacity and price
+            avg = test.getAvgNumRooms();
+        }catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+        return avg;
+    }
+
     public static void main(String[] args) {
         // JDBC URL, username, and password of MySQL server
 
       try {
 
-          List<Room> test = allRooms();
+          List<String> test = avgNumRooms();
           if(test.isEmpty()){
              System.out.println("No rooms found");
           }
-          for (Room room : test) {
-              System.out.println(room);
+          for (String avg : test) {
+              System.out.println(avg);
           }
       }catch (Exception e){
           System.out.println(e.getMessage());
