@@ -10,7 +10,7 @@ public class Hotel {
     private String address;
     private String area;
     private String phone;
-    private double rating;
+    private float rating;
 
     /**
      * Constructor to create Hotel object with id, chain_name, chain_address, num_of_rooms, email, address,area, phone, rating
@@ -25,7 +25,7 @@ public class Hotel {
      * @param phone           phone number of the hotel
      * @param rating          rating of the hotel, can only be 0 to 5
      */
-    public Hotel(Integer id, String chain_name, String chain_address, Integer num_of_rooms, String email, String address, String area, String phone, double rating) throws Exception {
+    public Hotel(Integer id, String chain_name, String chain_address, Integer num_of_rooms, String email, String address, String area, String phone, float rating) throws Exception {
         this.id = id;
         this.chain_name = chain_name;
         this.chain_address = chain_address;
@@ -51,7 +51,7 @@ public class Hotel {
     public String getAddress(){return this.address;}
     public String getArea(){return this.area;}
     public String getPhone(){return this.phone;}
-    public double getRating(){return this.rating;}
+    public float getRating(){return this.rating;}
 
     //Setters
     public void setId(Integer id){this.id = id;}
@@ -62,7 +62,7 @@ public class Hotel {
     public void setAddress(String address){this.address = address;}
     public void setArea(String area){this.area = area;}
     public void setPhone(String phone){this.phone = phone;}
-    public void setRating(double rating) throws Exception {
+    public void setRating(float rating) throws Exception {
         if (rating < 0 || rating > 5){
             throw new Exception("Rating cannot be greater than 5 or less than 0");
         }
