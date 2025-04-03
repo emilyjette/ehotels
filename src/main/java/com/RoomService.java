@@ -71,7 +71,6 @@ public class RoomService {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()){
-                //??
                 Room room = new Room(
                         rs.getInt("id"),
                         rs.getInt("hotelid"),
@@ -230,6 +229,37 @@ public class RoomService {
         }
 
         return message;
+    }
+
+    public List<String> getAvgNumRooms()throws Exception{
+        Connection con = null;
+        String message = "";
+        List<String> avg = new ArrayList<>();
+
+        String sql = "Select Chain_name, avg(Num_of_rooms) as Avg_num_rooms From Hotel Group by Chain_name;";
+        ConnectionDB db = new ConnectionDB();
+
+        try{
+            con = db.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()){
+                String test = rs.getString("chain_name") +": "+ rs.getString("Avg_num_rooms");
+                avg.add(test);
+
+            }
+
+            rs.close();
+            stmt.close();
+            con.close();
+            db.close();
+
+            return avg;
+
+        }catch  (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
 
 
