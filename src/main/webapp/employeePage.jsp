@@ -18,6 +18,9 @@
 <button onClick = "goToConvertPage()">Turn Booking into renting</button><br>
 <button onClick = "goToRentingPage()">Create renting</button><br>
 <button onClick = "goToPaymentPage()">Insert Customer Payment</button>
+<button onClick = "goToChangeCustomerPage()">Add/Delete/Update Customer Info</button>
+<button onClick = "goToPaymentPage()">Add/Delete/Update Hotel Info</button>
+<button onClick = "goToPaymentPage()">Add/Delete/Update Employee Info</button>
 
 
 <script>
@@ -32,6 +35,21 @@
     }
 </script>
 
+<script>
+    function goToPaymentPage(){
+        window.location.href = 'paymentPage.jsp';
+    }
+</script>
+<script>
+    function goToChangeCustomerPage(){
+        window.location.href = 'changeCustomerPage.jsp';
+    }
+</script>
+<script>
+    function goToPaymentPage(){
+        window.location.href = 'paymentPage.jsp';
+    }
+</script>
 <script>
     function goToPaymentPage(){
         window.location.href = 'paymentPage.jsp';
