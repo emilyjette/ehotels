@@ -14,6 +14,15 @@
 <body>
 <jsp:include page="navbar.jsp"/>
 <h2>Hello Employee!</h2>
+<h2>Select service</h2>
+<button onClick = "goToPaymentPage()">Insert Customer Payment</button>
+
+
+<script>
+    function goToPaymentPage(){
+        window.location.href = 'paymentPage.jsp';
+    }
+</script>
 
 </body>
 </html>
