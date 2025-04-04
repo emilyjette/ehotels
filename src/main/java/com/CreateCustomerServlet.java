@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
 
-@WebServlet("/ChangeCustomerServlet")
+@WebServlet("/CreateCustomerServlet")
 
 public class CreateCustomerServlet extends HttpServlet{
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
