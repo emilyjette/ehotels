@@ -54,7 +54,7 @@ public class RoomService {
     public List<Room> getSpecificRooms(Date date_start, Date date_end, int capacity, String area, String chain_name, Double rating, int num_of_rooms, Float price) throws Exception{
         Connection con = null;
 
-        String sql = "SELECT R.* FROM ehotels.Hotel H JOIN Hotel_Room R ON H.id = R.hotelid LEFT JOIN renting as Rent on R.id = Rent.roomid and Rent.checkin_date BETWEEN ? AND ? WHERE R.capacity =? And H.area =? AND H.chain_name =? AND H.rating=? AND H.num_of_rooms=? AND R.price = ? AND Rent.roomid IS Null";
+        String sql = "SELECT R.* FROM ehotels.Hotel H JOIN ehotels.Hotel_Room R ON H.id = R.hotelid LEFT JOIN renting as Rent on R.id = Rent.roomid and Rent.checkin_date BETWEEN ? AND ? WHERE R.capacity =? And H.area =? AND H.chain_name =? AND H.rating=? AND H.num_of_rooms=? AND R.price = ? AND Rent.roomid IS Null";
         ConnectionDB db = new ConnectionDB();
         List<Room> rooms = new ArrayList<>();
 
@@ -96,6 +96,44 @@ public class RoomService {
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }
+    }
+
+    public String bookRoom(Date date_start, int roomId, int customerId)throws Exception{
+        Connection con = null;
+
+        String sql = "insert into ehotels.booking(id,customerid,roomid,booking_date,status) values (?,?,?,?,'booked');";
+        ConnectionDB db = new ConnectionDB();
+
+        int id = (int)(Math.random() * 101); // 0 to 100
+
+        String message = "";
+        try {
+            con = db.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1,id);
+            stmt.setInt(2,customerId);
+            stmt.setInt(3,roomId);
+            stmt.setDate(4,date_start);
+
+            ResultSet rs = stmt.executeQuery();
+
+
+            rs.close();
+            con.close();
+            // close the statement
+            stmt.close();
+            // close the connection
+            db.close();
+        } catch (Exception e) {
+            message = "Error while creating booking: " + e.getMessage();
+        } finally {
+            if (con != null) // if connection is still open, then close.
+                con.close();
+            if (message.isEmpty()) message = "Booking successfully created!";
+
+        }
+        // return respective message
+        return message;
     }
 
     /*
@@ -263,6 +301,5 @@ public class RoomService {
             throw new Exception(e.getMessage());
         }
     }
-
 
 }

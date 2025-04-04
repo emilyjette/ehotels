@@ -1,19 +1,5 @@
-<%@ page import="com.RoomService" %>
-<%@ page import="com.Room" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%
-    // retrieve rooms from database
-    RoomService test = new RoomService();
-    List<Room> rooms = null;
-    try {
-        rooms = test.getAllRooms();
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title> Customer Page </title>
+    <title> Customer Search Page </title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
@@ -30,7 +16,7 @@
 
 <body>
 <jsp:include page="navbar.jsp"/>
-<h2 style="background-color:MediumSeaGreen;color:White;text-align:center;">Hello Customer!</h2>
+<h2 style="background-color:MediumSeaGreen;color:White;text-align:center;">Search for a Room</h2>
 
 <form name="form1" id="form1" action="searchResults.jsp" method="get">
   Capacity: <select name="capacity" id="capacity">
@@ -83,11 +69,27 @@
       Number of rooms: <input type="text" name="num_of_rooms" id = "num_of_rooms" placeholder ="75">
    <br><br>
     Price: <select name="price" id="price">
-               <option value="197.90" selected="selected">197.90</option>
+               <option value="187.90" selected="selected">187.90</option>
+               <option value="189.90" >189.90</option>
+               <option value="197.90" >197.90</option>
+               <option value="198.90" >198.90</option>
                <option value="205.00">205.00</option>
+               <option value="207.00">207.00</option>
+               <option value="207.99">207.99</option>
                <option value="210.50">210.50</option>
+               <option value="212.15">212.15</option>
+               <option value="212.55">212.55</option>
+               <option value="213.55">213.55</option>
+               <option value="215.50">215.50</option>
                <option value="270.50">270.50</option>
+               <option value="279.50">279.50</option>
+               <option value="283.50">283.50</option>
+               <option value="288.50">288.50</option>
+               <option value="289.50">289.50</option>
                <option value="311.50">311.50</option>
+               <option value="314.20">314.20</option>
+               <option value="315.20">315.20</option>
+               <option value="324.20">324.20</option>
              </select>
              <br><br>
   Start of stay: <input type="date" name="date_start" value="date_start" id ="date_start">
