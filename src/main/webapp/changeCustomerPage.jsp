@@ -34,4 +34,8 @@ Enter Date Registered: <input type="text" name="date_of_reg" id = "date_of_reg" 
 <br>
     <button type="submit">Create a Customer</button>
 </form>
+<form action="DeleteCustomerServlet" method="post">
+Enter Customer ID:  <input type="text" name="custID" id = "custID" placeholder ="0">
+    <button type="submit">Delete a Customer</button>
+</form>
 </body>
