@@ -41,7 +41,7 @@ public class BookRoomServlet extends HttpServlet {
             CustomerService test = new CustomerService();
             Customer customer;
             try {
-                customer = test.getSpecificCustomer("Taylor Swift");
+                customer = test.getSpecificCustomer(customerName);
             }catch (Exception e){
                 throw new Exception(e.getMessage());
             }
