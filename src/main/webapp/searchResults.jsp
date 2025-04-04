@@ -93,6 +93,11 @@ String date_end= request.getParameter("date_end") ;
    <% } %>
 </table>
  <% } %>
-
+<button onClick="goToSearchPage()">Back to search</button>
+<script>
+function goToSearchPage(){
+window.location.href = 'customerSearchPage.jsp';
+}
+</script>
 </body>
 </html>

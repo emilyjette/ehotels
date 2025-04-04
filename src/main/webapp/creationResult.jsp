@@ -6,18 +6,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title> Booking Result Page </title>
+    <title> Account Creation Result Page </title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-
 </head>
 
 <body>
 <jsp:include page="navbar.jsp"/>
-<h2 style="background-color:MediumSeaGreen;color:White;text-align:center;">Booking Results</h2>
-    <h3> Result: Booking was a Success! </h3>
-    <a href="customerSearchPage.jsp"><button>Back to Room Search</button></a>
+<h2 style="background-color:MediumSeaGreen;color:White;text-align:center;">Account Creation Results</h2>
+    <h3> Result: Account was successfully created  </h3>
 </body>
 </html>

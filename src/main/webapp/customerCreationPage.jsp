@@ -13,6 +13,13 @@
 </head>
 <body>
 <jsp:include page="navbar.jsp"/>
-<h2 style="background-color:MediumSeaGreen;color:White;text-align:center;">Hello Customer!</h2>
+<h2 style="background-color:MediumSeaGreen;color:White;text-align:center;">Create Account</h2>
+<form action="CreateCustomerServlet" method="post">
+    Enter your name: <input type="text" name="custName" id = "custName" placeholder ="John Doe">
+    <br><br>
+    Enter your address: <input type="text" name="address" id = "address" placeholder ="123 Play Street">
+    <br><br>
+    <input type="submit" value="Submit">
+</form>
 </body>
 </html>
