@@ -44,23 +44,48 @@ public class test {
         return avg;
     }
 
+    public static List<Customer> getCustomer() throws Exception{
+        CustomerService test = new CustomerService();
+        List<Customer> customers;
+        try {
+             customers = test.getAllCustomers();
+        }catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+        return customers;
+    }
+    public static Customer getSpecificCustomer() throws Exception{
+        CustomerService test = new CustomerService();
+        Customer customers;
+        try {
+            customers = test.getSpecificCustomer("Taylor Swift");
+        }catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+        return customers;
+    }
+
+
     public static void main(String[] args) {
         // JDBC URL, username, and password of MySQL server
 
       try {
 
-          List<Room> test = specificRooms();
-          if(test.isEmpty()){
-             System.out.println("No rooms found");
-          }
-          for (Room room : test) {
-              System.out.println(room);
-          }
+         Customer test = getSpecificCustomer();
+         System.out.println(test);
+         System.out.println(test.getId());
+//          if(test.isEmpty()){
+//             System.out.println("No customer found");
+//          }
+//          for (Customer customer : test) {
+//              System.out.println(customer);
+//          }
       }catch (Exception e){
           System.out.println(e.getMessage());
       }
 
-/*        try{
+/*
+      try{
             Connection db = DriverManager.getConnection("jdbc:postgresql://localhost:5433/postgres",
                     "postgres", "admin");
 
@@ -101,10 +126,10 @@ public class test {
             rs4.close();
 
             System.out.println("query ");
-            ResultSet rs = st.executeQuery("Select area from Hotel");
-            //System.out.println("Employee name \t Hotel name \t Hotel address");
+            ResultSet rs = st.executeQuery("Select * from Customer");
+            System.out.println("id \t date of reg \t name \t address");
             while(rs.next()){
-                System.out.println( rs.getString(1));
+                System.out.println( rs.getInt(1)+"\t"+rs.getDate(2)+"\t"+rs.getString(3)+"\t"+ rs.getString(4));
             }
             st.close();
             db.close();

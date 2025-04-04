@@ -73,6 +73,7 @@ String date_end= request.getParameter("date_end") ;
     <th>View</th>
     <th>Damages</th>
     <th>Extendable</th>
+    <th style="background-color:Grey"></th>
   </tr>
   <%
     for (Room r : rooms) { %>
@@ -83,6 +84,11 @@ String date_end= request.getParameter("date_end") ;
     <td><%= r.getView() %></td>
     <td><%= r.getDamages() %></td>
     <td><%= r.getExtendable() %></td>
+    <td>
+     <a href="bookingPage.jsp?roomId=<%= r.getId() %>&date_start=<%=date_start %>&chain_name=<%=chain_name %>&area=<%=area %>">
+        <button>Book room</button>
+     </a>
+    </td>
     </tr>
    <% } %>
 </table>

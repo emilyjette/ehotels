@@ -7,8 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerService {
+
     public List<Customer> getAllCustomers() throws Exception{
-        String sql = "SELECT * FROM Customer";
+        String sql = "SELECT * FROM ehotels.Customer";
         ConnectionDB db = new ConnectionDB();
 
         List<Customer> customers = new ArrayList<>();
@@ -39,9 +40,37 @@ public class CustomerService {
         }
     }
 
+    public Customer getSpecificCustomer(String name) throws Exception{
+        String sql = "SELECT * FROM ehotels.Customer where name=?";
+        ConnectionDB db = new ConnectionDB();
+
+        try(Connection con = db.getConnection()) {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1,name);
+            ResultSet rs = stmt.executeQuery();
+            Customer customer = null;
+            if (rs.next()){
+                 customer = new Customer(
+                        rs.getInt("id"),
+                        rs.getDate("date_of_reg"),
+                        rs.getString("name"),
+                        rs.getString("address")
+                );
+            }
+            rs.close();
+            stmt.close();
+            con.close();
+            db.close();
+
+            return customer;
+
+        }catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+    }
 
     /*
-     * @param id   id of the customer to be deleted
+     * @param id id of the customer to be deleted
      * @return string states if the customer was deleted or not
      * @return Exception when trying to connect to the db
      * */
@@ -49,7 +78,7 @@ public class CustomerService {
         Connection con = null;
         String message = "";
 
-        String sql = "DELETE FROM Customer WHERE id = ?;";
+        String sql = "DELETE FROM ehotels.Customer WHERE id = ?;";
 
         ConnectionDB db = new ConnectionDB();
 
@@ -87,7 +116,7 @@ public class CustomerService {
         System.out.println(customer.getName());
         System.out.println(customer.getAddress());
 
-        String insertRoomQuery = "Insert into customer (id,date_of_reg,name,address) Values (?,?,?,?);";
+        String insertRoomQuery = "Insert into ehotels.customer (id,date_of_reg,name,address) Values (?,?,?,?);";
 
         try {
             con = db.getConnection(); //get Connection
@@ -133,7 +162,7 @@ public class CustomerService {
         Connection con = null;
         String message = "";
 
-        String sql = "UPDATE customer SET date_of_reg=?, name=?, address=? WHERE id=?;";
+        String sql = "UPDATE ehotels.customer SET date_of_reg=?, name=?, address=? WHERE id=?;";
         ConnectionDB db = new ConnectionDB();
 
         try {

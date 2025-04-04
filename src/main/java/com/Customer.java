@@ -38,10 +38,6 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "<ul>"
-                + "<li>Customer= " + id + "</li>"
-                + "<li>Customer= " + date_of_reg + "</li>"
-                + "<li>Customer= " + name + "</li>"
-                + "<li>Customer= " + address + "</li>";
+        return "Customer= " + id + "Customer= " + date_of_reg + "Customer= " + name + "Customer= " + address;
     }
 }
