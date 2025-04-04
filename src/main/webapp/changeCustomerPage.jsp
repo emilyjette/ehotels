@@ -4,14 +4,7 @@
 <%@ page import="java.sql.Date"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%
-    String ID = request.getParameter("custID");
-    Integer intCustID = Integer.parseInt(ID);
-    String date = request.getParameter("date_of_reg");
-    Date date_of_reg = Date.valueOf(date);
-    String name = request.getParameter("custName");
-    String address = request.getParameter("custAddress");
-%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,7 +23,7 @@
 <h3>You are creating a customer:</h3>
 <br><br>
 <form action="CreateCustomerServlet" method="post">
-Enter Customer ID:  <input type="text" name="custID" id = "custID" placeholder ="">
+Enter Customer ID:  <input type="text" name="custID" id = "custID" placeholder ="0">
 <br>
 Enter Customer Name: <input type="text" name="custName" id = "custName" placeholder ="">
 <br>

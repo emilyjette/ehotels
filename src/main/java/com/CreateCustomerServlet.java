@@ -30,9 +30,11 @@ public class CreateCustomerServlet extends HttpServlet{
 
             // Pass the result message to the JSP
             request.setAttribute("message", resultMessage);
+            request.getRequestDispatcher("changeCustomerResult.jsp").forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("message", "Error creating customer: " + e.getMessage());
+            request.getRequestDispatcher("changeCustomerResult.jsp").forward(request, response);
         }
     }
 
