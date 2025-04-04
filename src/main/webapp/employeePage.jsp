@@ -15,14 +15,27 @@
 <jsp:include page="navbar.jsp"/>
 <h2>Hello Employee!</h2>
 <h2>Select service</h2>
+<button onClick = "goToConvertPage()">Turn Booking into renting</button><br>
+<button onClick = "goToRentingPage()">Create renting</button><br>
 <button onClick = "goToPaymentPage()">Insert Customer Payment</button>
 
+
+<script>
+    function goToConvertPage(){
+        window.location.href = 'bookingToRentingPage.jsp';
+    }
+</script>
+
+<script>
+    function goToRentingPage(){
+        window.location.href = 'createRentingPage.jsp';
+    }
+</script>
 
 <script>
     function goToPaymentPage(){
         window.location.href = 'paymentPage.jsp';
     }
 </script>
-
 </body>
 </html>
