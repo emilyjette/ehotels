@@ -24,9 +24,11 @@ public class DeleteCustomerServlet extends HttpServlet {
 
             // Pass the result message to the JSP
             request.setAttribute("message", resultMessage);
+            request.getRequestDispatcher("changeCustomerResult.jsp").forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("message", "Error creating customer: " + e.getMessage());
+            request.setAttribute("message", "Error deleting customer: " + e.getMessage());
+            request.getRequestDispatcher("changeCustomerResult.jsp").forward(request, response);
         }
     }
 }
