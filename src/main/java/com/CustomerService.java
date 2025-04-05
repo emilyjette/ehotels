@@ -170,8 +170,6 @@ public class CustomerService {
             PreparedStatement stmt = con.prepareStatement(sql);
 
             // set every ? of statement
-
-            // set every ? of statement
             stmt.setDate(1, customer.getDate_of_reg());
             stmt.setString(2,customer.getName());
             stmt.setString(3,customer.getAddress());

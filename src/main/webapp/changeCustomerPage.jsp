@@ -34,8 +34,26 @@ Enter Date Registered: <input type="text" name="date_of_reg" id = "date_of_reg" 
 <br>
     <button type="submit">Create a Customer</button>
 </form>
+<h4>You are deleting a customer:</h4>
+<br><br>
 <form action="DeleteCustomerServlet" method="post">
 Enter Customer ID:  <input type="text" name="custID" id = "custID" placeholder ="0">
+<br>
     <button type="submit">Delete a Customer</button>
+</form>
+
+<form action="UpdateCustomerServlet" method="post">
+<h5>You are updating a customer:</h5>
+<br><br>
+Enter Customer ID:  <input type="text" name="custID" id = "custID" placeholder ="0">
+<br>
+Enter Customer Name: <input type="text" name="custName" id = "custName" placeholder ="">
+<br>
+Enter Customer Address: <input type="text" name="custAddress" id = "custAddress" placeholder ="">
+<br>
+Enter Date Registered: <input type="text" name="date_of_reg" id = "date_of_reg" placeholder ="">
+<br>
+<br>
+    <button type="submit">Update a Customer</button>
 </form>
 </body>
