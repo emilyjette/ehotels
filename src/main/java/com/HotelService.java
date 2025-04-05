@@ -49,7 +49,7 @@ public class HotelService {
      * @return string states if the hotel was deleted or not
      * @return Exception when trying to connect to the db
      * */
-    public String deleteRoom(Integer id) throws Exception{
+    public String deleteHotel(Integer id) throws Exception{
         Connection con = null;
         String message = "";
 
@@ -161,6 +161,9 @@ public class HotelService {
             stmt.setString(4,hotel.getArea());
             stmt.setString(5,hotel.getPhone());
             stmt.setFloat(6,hotel.getRating());
+            stmt.setInt(7,hotel.getId());
+            stmt.setString(8,hotel.getChain_name());
+            stmt.setString(9,hotel.getChain_address());
 
             stmt.executeUpdate();
 

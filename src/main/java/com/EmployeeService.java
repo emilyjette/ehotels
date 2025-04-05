@@ -141,11 +141,10 @@ public class EmployeeService {
             PreparedStatement stmt = con.prepareStatement(sql);
 
             // set every ? of statement
-
-            // set every ? of statement
             stmt.setString(1, employee.getFirst_name());
             stmt.setString(2,employee.getLast_name());
             stmt.setString(3,employee.getAddress());
+            stmt.setInt(4, employee.getSSN());
 
 
             stmt.executeUpdate();
