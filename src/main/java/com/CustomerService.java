@@ -174,8 +174,7 @@ public class CustomerService {
             stmt.setString(2,customer.getName());
             stmt.setString(3,customer.getAddress());
             stmt.setInt(4,customer.getId());
-
-
+            
             stmt.executeUpdate();
 
             stmt.close();
