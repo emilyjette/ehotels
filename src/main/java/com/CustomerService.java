@@ -173,6 +173,7 @@ public class CustomerService {
             stmt.setDate(1, customer.getDate_of_reg());
             stmt.setString(2,customer.getName());
             stmt.setString(3,customer.getAddress());
+            stmt.setInt(4,customer.getId());
 
 
             stmt.executeUpdate();
